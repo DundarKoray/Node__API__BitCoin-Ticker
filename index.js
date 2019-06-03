@@ -13,9 +13,26 @@ app.get("/", function(req, res){
 //this prints whatever is selected in first section BTC, LTC, ETH
 app.post("/", function(req, res){
     // console.log(req.body.crypto)
+    let crypto = req.body.crypto
+    let fiat = req.body.fiat
 
-    request("https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCUSD", function(error, response, body){
-        console.log(body)
+    let baseURL = "https://apiv2.bitcoinaverage.com/indices/global/ticker/"
+    let finalURL = `${baseURL}${crypto}${fiat}`
+
+    request(finalURL, function(error, response, body){
+        // console.log(body)
+        let data = JSON.parse(body)
+        let currentPrice = data.last
+        let weeklyAvarage = data.averages.week
+        
+        let currentDate = data.display_timestamp
+
+        //if you need to send more then one item, you need to use res.write and at the end res.end
+        res.write(`<p>The current date is ${currentDate}</p>`)
+        res.write(`<h1>The current price of ${crypto} is ${currentPrice}${fiat}</h1>`)
+        res.send()
+        console.log('Currently', currentPrice)
+        console.log('Weekly Avarage', weeklyAvarage)
     })
 })
 
