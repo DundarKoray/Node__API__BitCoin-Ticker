@@ -24,7 +24,7 @@ app.post("/", function(req, res){
             from:crypto,
             to: fiat,
             amount:amount
-        },
+        }
 
         
     }
