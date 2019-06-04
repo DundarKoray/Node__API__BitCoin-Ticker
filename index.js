@@ -26,7 +26,7 @@ app.post("/", function(req, res){
             amount:amount
         },
 
-        body: jsonData
+        
     }
 
     request(options, function(error, response, body){
