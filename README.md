@@ -4,7 +4,7 @@ This app is a crypto exchange rate calculator which helps you convert prices onl
 
 # Demo
 
-[netlify](https://mystifying-tesla-6fc279.netlify.com/)
+[netlify](https://adoring-brown-a4de85.netlify.com/)
 
 # Author
 
