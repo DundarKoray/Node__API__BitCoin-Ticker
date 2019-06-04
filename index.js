@@ -24,7 +24,9 @@ app.post("/", function(req, res){
             from:crypto,
             to: fiat,
             amount:amount
-        }
+        },
+
+        body: jsonData
     }
 
     request(options, function(error, response, body){
