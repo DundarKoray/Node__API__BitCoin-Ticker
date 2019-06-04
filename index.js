@@ -15,24 +15,32 @@ app.post("/", function(req, res){
     // console.log(req.body.crypto)
     let crypto = req.body.crypto
     let fiat = req.body.fiat
+    let amount = req.body.amount
+    
+    let options = {
+        url: "https://apiv2.bitcoinaverage.com/convert/global",
+        method: "GET",
+        qs: {
+            from:crypto,
+            to: fiat,
+            amount:amount
+        }
+    }
 
-    let baseURL = "https://apiv2.bitcoinaverage.com/indices/global/ticker/"
-    let finalURL = `${baseURL}${crypto}${fiat}`
-
-    request(finalURL, function(error, response, body){
+    request(options, function(error, response, body){
         // console.log(body)
         let data = JSON.parse(body)
-        let currentPrice = data.last
-        let weeklyAvarage = data.averages.week
+        let price = data.price
+        console.log(price)
+        let currentDate = data.time
+      
         
-        let currentDate = data.display_timestamp
 
         //if you need to send more then one item, you need to use res.write and at the end res.end
         res.write(`<p>The current date is ${currentDate}</p>`)
-        res.write(`<h1>The current price of ${crypto} is ${currentPrice}${fiat}</h1>`)
+        res.write(`<h1>${amount}${crypto} is currently worth ${price}${fiat}</h1>`)
         res.send()
-        console.log('Currently', currentPrice)
-        console.log('Weekly Avarage', weeklyAvarage)
+        
     })
 })
 
