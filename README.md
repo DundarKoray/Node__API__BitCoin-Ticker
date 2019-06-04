@@ -7,6 +7,10 @@ This app is a crypto exchange rate calculator which helps you convert prices onl
 Click the link below to see the app.<br/>
 [Heroku](https://mighty-lake-26558.herokuapp.com/)
 
+# Preview
+
+![Bitcoin Ticker - Preview](./preview.gif)
+
 # Author
 
 Koray Dündar
