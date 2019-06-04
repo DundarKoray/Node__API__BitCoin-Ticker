@@ -4,7 +4,7 @@ This app is a crypto exchange rate calculator which helps you convert prices onl
 
 # Demo
 
-Click the link below to see the app. <br/>
+Click the link below to see the app. <br/> <br/>
 [Heroku](https://mighty-lake-26558.herokuapp.com/)
 
 # Author
